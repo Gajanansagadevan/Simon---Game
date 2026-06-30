@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simon Memory Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Confetti container -->
+  <div id="confetti-container" aria-hidden="true"></div>
+
+  <!-- ── Main wrapper ── -->
+  <div class="app-wrapper">
+
+    <!-- ── Header / HUD ── -->
+    <header class="hud" role="banner">
+      <div class="hud-stat">
+        <span class="hud-label">Level</span>
+        <span class="hud-value" id="hud-level">0</span>
+      </div>
+
+      <div class="hud-center">
+        <h1 class="game-title">SIMON</h1>
+      </div>
+      <div class="hud-stat">
+        <span class="hud-label">Best</span>
+        <span class="hud-value" id="hud-best">0</span>
+      </div>
+    </header>
+
+    <!-- ── Progress bar ── -->
+    <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Round progress">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- ── Game board ── -->
+    <main class="board-area" role="main">
+
+      <!-- Game over overlay -->
+      <div class="result-overlay" id="result-overlay" hidden>
+        <div class="result-card glass-panel">
+          <p class="result-emoji" id="result-emoji">💀</p>
+          <h2 class="result-heading" id="result-heading">Game Over</h2>
+          <p class="result-sub" id="result-sub">You reached <strong id="result-level">0</strong></p>
+          <p class="result-best" id="result-best-line" hidden>🏆 New High Score!</p>
+          <div class="result-actions">
+            <button class="action-btn primary" id="btn-play-again">Play Again</button>
+            <button class="action-btn secondary" id="btn-menu">Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simon button grid -->
+      <div class="simon-ring" role="group" aria-label="Simon game buttons">
+        <button
+          class="simon-btn" id="btn-green"
+          data-color="green"
+          aria-label="Green"
+          data-key="q"
+        ></button>
+        <button
+          class="simon-btn" id="btn-red"
+          data-color="red"
+          aria-label="Red"
+          data-key="w"
+        ></button>
+        <button
+          class="simon-btn" id="btn-yellow"
+          data-color="yellow"
+          aria-label="Yellow"
+          data-key="a"
+        ></button>
+        <button
+          class="simon-btn" id="btn-blue"
+          data-color="blue"
+          aria-label="Blue"
+          data-key="s"
+        ></button>
+
+        <!-- Centre hub -->
+        <div class="hub" aria-hidden="true">
+          <span class="hub-score" id="hub-score">0</span>
+          <span class="hub-label-small">score</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ── Control bar ── -->
+    <footer class="controls" role="contentinfo">
+      <button class="ctrl-btn" id="btn-sound" aria-label="Toggle sound" aria-pressed="true" title="Toggle sound">
+        <svg class="icon icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+        <svg class="icon icon-sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn primary-ctrl" id="btn-start" aria-label="Start game">
+        Start
+      </button>
+
+      <button class="ctrl-btn" id="btn-restart" aria-label="Restart game" title="Restart" disabled>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="1 4 1 10 7 10"/>
+          <path d="M3.51 15a9 9 0 1 0 .49-4.5"/>
+        </svg>
+      </button>
+    </footer>
+
+  </div><!-- /.app-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
